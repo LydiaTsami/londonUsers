@@ -1,0 +1,70 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server londonUsers server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/)."
+  version: "1.0.0"
+  title: "londonUsers"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "lydia.tsami@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+tags:
+- name: "londonUsers"
+schemes:
+- "http"
+paths:
+  /users:
+    get:
+      tags:
+      - "londonUsers"
+      summary: "Finds users living in London or 50 miles from London"
+      operationId: "findLondonUsers"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+        "400":
+          description: "Invalid status value"
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        "500":
+          description: "Internal Server Error"
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+definitions:
+  User:
+    type: "object"
+    properties:
+      first_name:
+        type: "string"
+        example: "Mechelle"
+      last_name:
+        type: "string"
+        example: "Boam"
+      id:
+        type: "integer"
+        example: 135
+      ip_address:
+        type: string
+        example: "113.71.242.187"
+      email:
+        type: string
+        example: "mboam3q@thetimes.co.uk"
+      longitude:
+        type: number
+        example: 105.652983
+      latitude:
+        type: number
+        example: -6.5115909
